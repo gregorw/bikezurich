@@ -20,9 +20,11 @@ var trend = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.trend); });
 
+
+
 d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
   d.date = new Date(d.year);
-  d.close = +d.all_x || null;
+  d.close = +d.all_x;
   d.trend = +d.all_y;
   return d;
 }, function(error, data) {
@@ -56,8 +58,11 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
       .attr("text-anchor", "end")
       .text("Price ($)");
 
+  var filteredData = data.filter(function(d) {
+      return d.close != 0;
+  });
   g.append("path")
-      .datum(data)
+      .datum(filteredData)
       .attr("fill", "none")
       .attr("stroke", "steelblue")
       .attr("stroke-linejoin", "round")
