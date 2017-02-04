@@ -39,7 +39,25 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
     .attr("x2", x(new Date("2025")))
     .attr("y2", y(2))
     .attr("stroke", "gray")
-    .attr("stroke-width", 1.5)
+    .attr("stroke-width", 1)
+    .attr("stroke-dasharray", 5);
+
+ g.append("line")
+    .attr("x1", x(new Date("2025")))
+    .attr("y1", y(0))
+    .attr("x2", x(new Date("2025")))
+    .attr("y2", y(2))
+    .attr("stroke", "gray")
+    .attr("stroke-width", 1)
+    .attr("stroke-dasharray", 5);
+
+    g.append("line")
+    .attr("x1", x(new Date("2011")))
+    .attr("y1", y(2))
+    .attr("x2", x(new Date("2025")))
+    .attr("y2", y(2))
+    .attr("stroke", "gray")
+    .attr("stroke-width", 1)
     .attr("stroke-dasharray", 5);
 
   g.append("g")
