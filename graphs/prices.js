@@ -34,12 +34,13 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
   y.domain(d3.extent(data, function(d) { return d.trend; }));
 
   g.append("line")
-    .attr("x1", x(new Date("2009")))
-    .attr("y1", y(100))
-    .attr("x2", x(new Date("2012")))
-    .attr("y2", y(400))
-    .attr("stroke", "red")
-    .attr("stroke-width", 1.5);
+    .attr("x1", x(new Date("2013")))
+    .attr("y1", y(1))
+    .attr("x2", x(new Date("2025")))
+    .attr("y2", y(2))
+    .attr("stroke", "gray")
+    .attr("stroke-width", 1.5)
+    .attr("stroke-dasharray='5,5'");
 
   g.append("g")
       .attr("transform", "translate(0," + height + ")")
