@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html class="mdc-typography">
 <head>
-    <title>Zürich, Masterplan Velo – More</title>
+    <title>Masterplan Velo – Trend “More”</title>
+     <link rel="stylesheet"
+          href="node_modules/material-components-web/dist/material-components-web.css">
 </head>
-<body>
-<h1>Masterplan Velo—Trend “More”</h1>
+<body class="hub">
+<section class="mdc-layout-grid">
+    <h2 class="mdc-typography--display2">Masterplan Velo—Trend “More”</h2>
+    <svg width="960" height="500"></svg>
+</section>
 
-<svg width="960" height="500"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
@@ -65,5 +69,7 @@ d3.tsv("data.tsv", function(d) {
 });
 
 </script>
+<script src="node_modules/material-components-web/dist/material-components-web.js"></script>
+<script>mdc.autoInit()</script>
 </body>
 </html>
