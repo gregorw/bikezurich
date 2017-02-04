@@ -56,7 +56,7 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
       .attr("y", 6)
       .attr("dy", "0.71em")
       .attr("text-anchor", "end")
-      .text("Price ($)");
+      .text("Growth");
 
   var filteredData = data.filter(function(d) {
       return d.close != 0;
