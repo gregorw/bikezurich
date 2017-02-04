@@ -44,9 +44,7 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
 
   g.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-    .select(".domain")
-      .remove();
+      .call(d3.axisBottom(x));
 
   // y axis
   g.append("g")
