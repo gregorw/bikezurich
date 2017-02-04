@@ -1,4 +1,4 @@
-var svg = d3.select("svg#prices"),
+var svg = d3.select("#prices"),
     margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
@@ -16,15 +16,20 @@ var line = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
-d3.tsv("data/data.tsv", function(d) {
-  d.date = parseTime(d.date);
-  d.close = +d.close;
+var trend = d3.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.trend); });
+
+d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
+  d.date = new Date(d.year);
+  d.close = +d.all_x || null;
+  d.trend = +d.all_y;
   return d;
 }, function(error, data) {
   if (error) throw error;
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain(d3.extent(data, function(d) { return d.close; }));
+  y.domain(d3.extent(data, function(d) { return d.trend; }));
 
   g.append("line")
     .attr("x1", x(new Date("2009")))
@@ -59,4 +64,13 @@ d3.tsv("data/data.tsv", function(d) {
       .attr("stroke-linecap", "round")
       .attr("stroke-width", 1.5)
       .attr("d", line);
+
+  g.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "red")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-width", 1.5)
+      .attr("d", trend);
 });
