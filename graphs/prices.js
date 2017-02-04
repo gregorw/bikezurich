@@ -84,7 +84,7 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
       .attr("stroke", "steelblue")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2)
       .attr("d", line);
 
   g.append("path")
@@ -93,6 +93,6 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
       .attr("stroke", "red")
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2)
       .attr("d", trend);
 });
