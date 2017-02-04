@@ -40,7 +40,7 @@ d3.csv("data/overall_counts_per_year_with_trends.csv", function(d) {
     .attr("y2", y(2))
     .attr("stroke", "gray")
     .attr("stroke-width", 1.5)
-    .attr("stroke-dasharray='5,5'");
+    .attr("stroke-dasharray", 5);
 
   g.append("g")
       .attr("transform", "translate(0," + height + ")")
