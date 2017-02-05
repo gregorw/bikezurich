@@ -83,8 +83,9 @@ var Trend = (function(window, d3) {
     margin.left = 50;
     margin.bottom = 50;
 
+    goldenRatio = 1.61803399;
     width = winWidth - margin.left - margin.right;
-    height = 500 - margin.top - margin.bottom;
+    height = width / goldenRatio;
   }
 
   return {
@@ -92,3 +93,5 @@ var Trend = (function(window, d3) {
   }
 
 })(window,d3);
+
+window.addEventListener('resize', Trend.render);
