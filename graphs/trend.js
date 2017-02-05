@@ -36,12 +36,19 @@ var Trend = (function(window, d3) {
     // initialize svg
     svg = d3.select('#trend');
     chartWrapper = svg.append('g');
-    trendPath = chartWrapper.append('path').datum(data).classed('trend', true);
     valuesPath = chartWrapper.append('path').datum(data.filter(function(d) {
       return d.value != 0;
     })).classed('values', true);
+    trendPath = chartWrapper.append('path').datum(data).classed('trend', true);
     chartWrapper.append('g').classed('x axis', true);
-    chartWrapper.append('g').classed('y axis', true);
+    chartWrapper.append('g').classed('y axis', true)
+      .append("text")
+        .attr("fill", "#000")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Growth");
 
     // render the chart
     render();
@@ -75,13 +82,15 @@ var Trend = (function(window, d3) {
 
     valuesPath.attr('d', values);
     trendPath.attr('d', trend);
+
+    d3.line().x()
   }
 
   function updateDimensions(winWidth) {
     margin.top = 20;
-    margin.right = 50;
-    margin.left = 50;
-    margin.bottom = 50;
+    margin.right = 20;
+    margin.left = 30;
+    margin.bottom = 30;
 
     goldenRatio = 1.61803399;
     width = winWidth - margin.left - margin.right;
