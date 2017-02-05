@@ -1,6 +1,6 @@
 var Trend = (function(window, d3) {
 
-  var svg, data, x, y, xAxis, yAxis, dim, chartWrapper, values, valuesPath, trend, trendPath, margin = {}, width, height;
+  var parent, svg, data, x, y, xAxis, yAxis, dim, chartWrapper, values, valuesPath, trend, trendPath, margin = {}, width, height;
 
   // load data, then initialize chart
   d3.csv('data/overall_counts_per_year_with_trends.csv', convert, init);
@@ -34,7 +34,8 @@ var Trend = (function(window, d3) {
       .y(function(d) { return y(d.trend); });
 
     // initialize svg
-    svg = d3.select('#trend');
+    parent = document.getElementById('trend');
+    svg = d3.select(parent).append('svg');
     chartWrapper = svg.append('g');
     valuesPath = chartWrapper.append('path').datum(data.filter(function(d) {
       return d.value != 0;
@@ -56,8 +57,8 @@ var Trend = (function(window, d3) {
 
   function render() {
 
-    // get dimensions based on window size
-    updateDimensions(window.innerWidth);
+    // get dimensions
+    updateDimensions();
 
     // update x and y scales to new dimensions
     x.range([0, width]);
@@ -86,14 +87,15 @@ var Trend = (function(window, d3) {
     d3.line().x()
   }
 
-  function updateDimensions(winWidth) {
+  function updateDimensions() {
+    parentWidth = parent.getBoundingClientRect()['width'];
     margin.top = 20;
-    margin.right = 20;
-    margin.left = 30;
-    margin.bottom = 30;
+    margin.right = 40;
+    margin.left = 40;
+    margin.bottom = 40;
 
     goldenRatio = 1.61803399;
-    width = winWidth - margin.left - margin.right;
+    width = parentWidth - margin.left - margin.right;
     height = width / goldenRatio;
   }
 
