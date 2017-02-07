@@ -12,3 +12,11 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.line {
+  fill: none;
+  stroke-width: 1;
+  stroke: gray;
+  stroke-linecap: round;
+  stroke-dasharray: 5;
+}

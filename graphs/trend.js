@@ -1,6 +1,6 @@
 var Trend = (function(window, d3) {
 
-  var parent, svg, data, x, y, xAxis, yAxis, dim, chartWrapper, values, valuesPath, trend, trendPath, margin = {}, width, height;
+  var parent, svg, data, x, y, xAxis, yAxis, dim, chartWrapper, values, valuesPath, trend, trendPath, line, line2xPath, line2025Path, margin = {}, width, height;
 
   // load data, then initialize chart
   d3.csv('data/overall_counts_per_year_with_trends.csv', convert, init);
@@ -37,6 +37,7 @@ var Trend = (function(window, d3) {
     parent = document.getElementById('trend');
     svg = d3.select(parent).append('svg');
     chartWrapper = svg.append('g');
+    helpers = chartWrapper.append('g');
     valuesPath = chartWrapper.append('path').datum(data.filter(function(d) {
       return d.value != 0;
     })).classed('values', true);
@@ -50,6 +51,16 @@ var Trend = (function(window, d3) {
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
         .text("Growth");
+
+    line2xData = [{ year: "2011", factor: 2.0 }, { year: "2029", factor: 2.0 }];
+    line2025Data = [{ year: "2025", factor: 0.96 }, { year: "2025", factor: 2.1 }];
+    goalData = [{ year: "2013", factor: 1 }, { year: "2025", factor: 2 }]
+    line = d3.line()
+      .x(function(d) { return x(new Date(d.year)); })
+      .y(function(d) { return y(d.factor); })
+    line2xPath = helpers.append("path").datum(line2xData).classed('line', true);
+    line2025Path = helpers.append("path").datum(line2025Data).classed('line', true);
+    goalPath = helpers.append("path").datum(goalData).classed('line', true);
 
     // render the chart
     render();
@@ -83,8 +94,10 @@ var Trend = (function(window, d3) {
 
     valuesPath.attr('d', values);
     trendPath.attr('d', trend);
+    line2xPath.attr('d', line);
+    line2025Path.attr('d', line);
+    goalPath.attr('d', line);
 
-    d3.line().x()
   }
 
   function updateDimensions() {
