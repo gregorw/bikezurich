@@ -3,3 +3,27 @@
 body {
   margin: 0;
 }
+
+h2 {
+  text-align: center;
+}
+
+figure {
+  margin: 0;
+}
+
+article {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 3em;
+}
+section#comments {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+section#comments article {
+  max-width: 750px;
+}

@@ -4,23 +4,27 @@
   <title>Bicycle Master Plan—Trend “More”</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="node_modules/material-components-web/dist/material-components-web.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="hub">
-<section class="mdc-layout-grid">
+<section id="content" class="mdc-layout-grid">
   <article class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-    <h2 class="mdc-typography--display2">Bicycle Master Plan—Trend “More”</h2>
+    <h2>Bicycle Master Plan—Trend “More”</h2>
     <figure id="trend"></figure>
   </article>
 </section>
-
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<!--<script src="graphs/trends.js"></script>-->
-<script src="graphs/trend.js"></script>
-<script src="node_modules/material-components-web/dist/material-components-web.js"></script>
-<script>mdc.autoInit()</script>
-<script id="dsq-count-scr" src="//bikezurich.disqus.com/count.js" async></script>
-<div id="disqus_thread"></div>
-<script src="javascript/disqus.js"></script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<section id="comments">
+  <article>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--<script src="graphs/trends.js"></script>-->
+    <script src="graphs/trend.js"></script>
+    <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
+    <script>mdc.autoInit()</script>
+    <script id="dsq-count-scr" src="//bikezurich.disqus.com/count.js" async></script>
+    <div id="disqus_thread"></div>
+    <script src="javascript/disqus.js"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </article>
+</section>
 </body>
 </html>
