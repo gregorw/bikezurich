@@ -18,7 +18,7 @@ article {
 }
 
 section {
-  padding: 3em;
+  padding: 3em 1.5em;
 }
 section#comments {
   background: rgba(0, 0, 0, 0.02);
